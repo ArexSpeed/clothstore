@@ -1,10 +1,17 @@
 import React from 'react';
-import { Counter } from './features/counter/Counter';
+import Sidebar from './components/Sidebar';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-red-500">ClothStore</h1>
+    <div className="flex flex-row w-full h-full">
+      <Sidebar />
+      <div className="">
+        Main
+      </div>
+      {/* Sidebar */}
+      {/* Navbar */}
+      {/* Hero */}
+      {/* Main */}
     </div>
   );
 }
