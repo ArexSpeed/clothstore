@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Navbar = () => {
+const Navbar = ({ setCartOpen }) => {
   return (
     <nav className="p-4 flex flex-row justify-between items-center">
       <section className="w-1/2">
@@ -14,7 +14,10 @@ const Navbar = () => {
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
         <div className="absolute w-2 h-2 top-1 -right-1 bg-red-300 rounded-full"></div>
         </button>
-        <button className="mx-2 focus:outline-none">
+        <button 
+          className="mx-2 focus:outline-none"
+          onClick={() => setCartOpen(true)}
+        >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
         </button>
         <button className="mx-2 focus:outline-none">

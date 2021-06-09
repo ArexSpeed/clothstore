@@ -13,7 +13,8 @@ module.exports = {
   },
   variants: {
     extend: {
-      fontWeight: ['hover', 'focus', 'group-hover']
+      fontWeight: ['hover', 'focus', 'group-hover'],
+      rotate: ['active', 'group-hover'],
     },
   },
   plugins: [],

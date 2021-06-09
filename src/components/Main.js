@@ -37,11 +37,11 @@ const Main = () => {
           <h1 className="text-4xl font-bold">SPRING 2021</h1>
           <h1 className="text-4xl font-bold"> READY-TO-WEAR </h1>
           <h3 className="text-xl">We'll be saying "spring has sprung" before you know it</h3>
-          <div className="relative z-20 w-32 h-12">
+          <div className="relative group z-20 w-32 h-12">
             <button className="relative z-20 w-32 h-12 bg-black text-gray-300 text-center rounded-lg">
               Shop Now
             </button>
-            <div className="absolute top-0 left-0 transform -rotate-12 w-full h-full bg-green-300 rounded-lg z-10" />
+            <div className="absolute top-0 left-0 transform -rotate-12 transition duration-200 w-full h-full bg-green-300 rounded-lg z-10 group-hover:rotate-12" />
           </div>
         </div>
         <div>
@@ -56,13 +56,7 @@ const Main = () => {
         <div className="flex flex-row w-auto overflow-x-scroll">
           <ProductCard />
           <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+
         </div>
       </section>
     </main>
