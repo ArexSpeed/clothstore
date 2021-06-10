@@ -9,7 +9,7 @@ const Cart = () => {
     <div className="flex flex-col justify-center items-center">
       <div>My cart items</div>
       {items.map(item => (
-        <CartItem item={item} />
+        <CartItem key={item.id} item={item} />
       ))}
 
       <div className="relative group mt-4 z-20 w-32 h-12">
