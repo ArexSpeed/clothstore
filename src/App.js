@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Main from './components/Main';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Drawer from '@material-ui/core/Drawer'
 import Cart from './components/Cart';
+import Favorite from './components/Favorite';
 
 function App() {
   const [cartOpen, setCartOpen] = useState(false)
@@ -12,15 +14,17 @@ function App() {
       <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
         <Cart />
       </Drawer>
-      <Sidebar />
-      <div className="w-full overflow-y-scroll">
-        <Navbar setCartOpen={setCartOpen} />
-        <Main />
-      </div>
-      {/* Sidebar */}
-      {/* Navbar */}
-      {/* Hero */}
-      {/* Main */}
+      <BrowserRouter>
+        <Sidebar />
+        <div className="w-full overflow-y-scroll">
+          
+          <Navbar setCartOpen={setCartOpen} />
+            <Switch>
+              <Route path="/" exact component={Main} />
+              <Route path="/favorite" component={Favorite} />
+            </Switch>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { selectTotalItems } from '../features/cart/cartSlice';
 
 const Navbar = ({ setCartOpen }) => {
@@ -13,10 +14,12 @@ const Navbar = ({ setCartOpen }) => {
         </div>
       </section>
       <section className="flex flex-row">
-        <button className="relative mx-2 focus:outline-none">
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-        <div className="absolute w-2 h-2 top-1 -right-1 bg-red-300 rounded-full"></div>
-        </button>
+        <Link to="/favorite">
+          <button className="relative mx-2 focus:outline-none">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+          <div className="absolute w-2 h-2 top-1 -right-1 bg-red-300 rounded-full"></div>
+          </button>
+        </Link>
         <button 
           className="relative mx-2 focus:outline-none"
           onClick={() => setCartOpen(true)}
