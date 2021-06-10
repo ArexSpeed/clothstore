@@ -16,7 +16,7 @@ function App() {
       </Drawer>
       <BrowserRouter>
         <Sidebar />
-        <div className="w-full overflow-y-scroll">
+        <div className="relative w-full overflow-y-scroll">
           
           <Navbar setCartOpen={setCartOpen} />
             <Switch>

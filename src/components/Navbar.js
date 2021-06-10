@@ -6,11 +6,11 @@ import { selectTotalItems } from '../features/cart/cartSlice';
 const Navbar = ({ setCartOpen }) => {
   const totalItems = useSelector(selectTotalItems);
   return (
-    <nav className="p-4 flex flex-row justify-between items-center">
-      <section className="w-1/2">
+    <nav className="sticky top-0 p-4 flex flex-row justify-between items-center bg-white">
+      <section className="hidden lg:block lg:w-1/2">
         <div className="w-full h-8 flex flex-row justify-start items-center bg-gray-100 rounded-md">
           <svg className="w-4 h-4 text-gray-400 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-          <input className="bg-transparent text-sm" placeholder="Search ..." />
+          <input className="bg-transparent text-sm w-full" placeholder="Search ..." />
         </div>
       </section>
       <section className="flex flex-row">

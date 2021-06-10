@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { add, remove, selectCartItems } from '../features/cart/cartSlice';
-import { add as addFavorite, remove as removeFavorite } from '../features/favorite/favoriteSlice';
+import { add as addFavorite, remove as removeFavorite, selectFavoriteItems } from '../features/favorite/favoriteSlice';
 
 const ProductCard = ({ product }) => {
   const [like, setLike] = useState(false);
   const [bag, setBag] = useState(false);
   const dispatch = useDispatch();
-  const isInBag = useSelector(selectCartItems)
+  const isInBag = useSelector(selectCartItems);
+  const isFavorite = useSelector(selectFavoriteItems)
 
   useEffect(() => {
     isInBag.filter(cartProduct => cartProduct.id === product.id && setBag(true))
   }, [isInBag, product.id])
+
+  useEffect(() => {
+    isFavorite.filter(favorite => favorite.id === product.id && setLike(true));
+  }, [])
 
   const toggleToBag = () => {
     console.log('addToBag')
