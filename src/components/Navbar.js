@@ -1,6 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectTotalItems } from '../features/cart/cartSlice';
 
 const Navbar = ({ setCartOpen }) => {
+  const totalItems = useSelector(selectTotalItems);
   return (
     <nav className="p-4 flex flex-row justify-between items-center">
       <section className="w-1/2">
@@ -15,10 +18,13 @@ const Navbar = ({ setCartOpen }) => {
         <div className="absolute w-2 h-2 top-1 -right-1 bg-red-300 rounded-full"></div>
         </button>
         <button 
-          className="mx-2 focus:outline-none"
+          className="relative mx-2 focus:outline-none"
           onClick={() => setCartOpen(true)}
         >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+          {totalItems !== 0 && (
+            <div className="absolute w-3 h-3 top-1 -right-1 bg-red-300 text-white rounded-full text-xs flex justify-center items-center">{totalItems}</div>
+          )}
         </button>
         <button className="mx-2 focus:outline-none">
           <div className="w-6 h-6 rounded-full overflow-hidden flex justify-center">

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { incrementQty, decrementQty } from '../features/cart/cartSlice';
+import { remove, incrementQty, decrementQty } from '../features/cart/cartSlice';
 
 
 const CartItem = ({ item }) => {
@@ -13,7 +13,11 @@ const CartItem = ({ item }) => {
 
   const decrement = () => {
     console.log('decrement')
-    dispatch(decrementQty(item.id))
+    if(item.qty > 1) {
+      dispatch(decrementQty(item.id))
+    } else {
+      dispatch(remove(item.id))
+    }
   }
 
   return (

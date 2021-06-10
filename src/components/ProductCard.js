@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { add, selectCartItems } from '../features/cart/cartSlice';
+import { add, remove, selectCartItems } from '../features/cart/cartSlice';
 
 const ProductCard = ({ product }) => {
   const [like, setLike] = useState(false);
@@ -10,11 +10,17 @@ const ProductCard = ({ product }) => {
 
   useEffect(() => {
     isInBag.filter(cartProduct => cartProduct.id === product.id && setBag(true))
-  }, [isInBag])
+  }, [isInBag, product.id])
 
-  const addToBag = () => {
+  const toggleToBag = () => {
     console.log('addToBag')
-    dispatch(add({...product, qty: 1}))
+    if(!bag) {
+      dispatch(add({...product, qty: 1}))
+    } else {
+      dispatch(remove(product.id))
+      setBag(false);
+    }
+    
   }
 
   return (
@@ -29,7 +35,7 @@ const ProductCard = ({ product }) => {
         </button>
         <button 
           className={`absolute flex justify-center items-center bottom-4 left-4 w-8 h-8 rounded-xl bg-gray-200 bg-opacity-50 focus:outline-none ${bag && 'bg-green-300'}`}
-          onClick={addToBag} 
+          onClick={toggleToBag} 
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
         </button>
