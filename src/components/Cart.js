@@ -1,12 +1,17 @@
 import React from 'react'
 import CartItem from './CartItem'
+import { useSelector } from 'react-redux'
+import { selectCartItems } from '../features/cart/cartSlice';
 
 const Cart = () => {
+  const items = useSelector(selectCartItems)
   return (
     <div className="flex flex-col justify-center items-center">
       <div>My cart items</div>
-      <CartItem />
-      <CartItem />
+      {items.map(item => (
+        <CartItem item={item} />
+      ))}
+
       <div className="relative group mt-4 z-20 w-32 h-12">
         <button className="relative z-20 w-32 h-12 bg-black text-gray-300 text-center rounded-lg">
           Check

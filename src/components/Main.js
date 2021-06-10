@@ -1,7 +1,11 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import ProductCard from './ProductCard'
 
 const Main = () => {
+  const [products, setProducts] = useState([])
+  const getProduct = async () => await (await fetch('https://fakestoreapi.com/products')).json().then(res => setProducts(res)); 
+  useEffect(() => getProduct(), [])
+  console.log(products, 'pro')
   return (
     <main className="p-4">
       <header className="flex flex-row justify-between items-center">
@@ -54,9 +58,7 @@ const Main = () => {
           <a href="#" className="text-gray-500">View All</a>
         </div>
         <div className="flex flex-row w-auto overflow-x-scroll">
-          <ProductCard />
-          <ProductCard />
-
+          {products.map(product => <ProductCard key={product.id} product={product} />)}
         </div>
       </section>
     </main>

@@ -1,21 +1,21 @@
 import React from 'react'
 
-const CartItem = () => {
+const CartItem = ({ item }) => {
   return (
-    <div className="w-72 min-w-max h-xl p-2 m-2 rounded-3xl border flex flex-col justify-between border-gray-100">
-      <div className="relative h-3/4 w-full">
-        <img className="rounded-3xl h-full object-cover" src="https://www.kindpng.com/picc/m/222-2220817_transparent-model-face-png-beautiful-women-png-png.png" alt="" />
+    <div className="w-72 max-w-min h-xl p-2 m-2 rounded-3xl border flex flex-col justify-between border-gray-100">
+      <div className="h-3/4 w-full">
+        <img className="rounded-3xl h-full max-w-xs object-contain" src={item.image} alt="" />
       </div>
       <div className="px-2">
-        <div>Title</div>
+        <div className="">{item.title.substring(0,20)}</div>
         <div className="w-full flex flex-row justify-between items-center">
           <div>
             <button className="w-8 h-8 rounded-xl bg-green-300 text-gray-700 focus:outline-none">+</button>
-             <span className="mx-2 font-semibold">1</span>
+             <span className="mx-2 font-semibold">{item.qty}</span>
             <button className="w-8 h-8 rounded-xl bg-red-300 text-gray-700 focus:outline-none">-</button> 
           </div>
           <div className="text-gray-900 font-bold">
-            $50.00
+            ${item.price}
           </div>
         </div>
       </div>

@@ -10,7 +10,6 @@ function App() {
   return (
     <div className="flex flex-row w-full h-full max-h-screen font-family overflow-hidden">
       <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
-        xd
         <Cart />
       </Drawer>
       <Sidebar />
