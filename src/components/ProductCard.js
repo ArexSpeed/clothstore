@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { add, remove, selectCartItems } from '../features/cart/cartSlice';
+import { add as addFavorite, remove as removeFavorite } from '../features/favorite/favoriteSlice';
 
 const ProductCard = ({ product }) => {
   const [like, setLike] = useState(false);
@@ -20,7 +21,16 @@ const ProductCard = ({ product }) => {
       dispatch(remove(product.id))
       setBag(false);
     }
-    
+  }
+
+  const toggleToFavorite = () => {
+    if(!like) {
+      dispatch(addFavorite(product))
+      setLike(true)
+    } else {
+      dispatch(removeFavorite(product.id))
+      setLike(false)
+    }
   }
 
   return (
@@ -29,7 +39,7 @@ const ProductCard = ({ product }) => {
         <img className="rounded-3xl h-full max-w-xs object-contain" src={product.image} alt="" />
         <button 
           className="absolute flex justify-center items-center top-4 right-4 w-8 h-8 rounded-xl bg-gray-200 bg-opacity-50 focus:outline-none"
-          onClick={() => setLike(!like)} 
+          onClick={toggleToFavorite} 
         >
           <svg className="w-6 h-6" fill={`${like ? 'pink' : 'none'}`} stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
         </button>
