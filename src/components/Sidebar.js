@@ -1,12 +1,19 @@
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectIsOpen } from '../features/sidebar/sidebarSlice'
+import { useDispatch ,useSelector } from 'react-redux';
+import { selectIsOpen } from '../features/sidebar/sidebarSlice';
+import { filterProducts } from '../features/products/productsSlice';
  
 const Sidebar = () => {
   const location = useLocation();
   const pathname = location.pathname;
   const open = useSelector(selectIsOpen);
+  const dispatch = useDispatch();
+
+  const handleFilter = (type) => {
+    dispatch(filterProducts(type))
+  }
+
   return (
     <div className={`${!open && 'hidden'} p-4 flex flex-col justify-between items-start w-64 max-w-xs h-full min-h-screen shadow-md`}>
     <div className="w-full flex flex-col justify-center items-start">
@@ -18,7 +25,11 @@ const Sidebar = () => {
       <section>
         <h3 className="mt-4 mb-4 font-semibold">Explore</h3>
         <ul className="w-full">
-          <Link to="/" className="w-full py-3 group flex flex-row justify-between items-center text-sm cursor-pointer">
+          <Link 
+            to="/" 
+            className="w-full py-3 group flex flex-row justify-between items-center text-sm cursor-pointer"
+            onClick={() => handleFilter('all')}
+          >
             <div className="flex">
               <svg className="w-5 h-5 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
               <span className={`mx-4 group-hover:font-semibold ${pathname === '/' && 'font-semibold'}`}>New In</span>
