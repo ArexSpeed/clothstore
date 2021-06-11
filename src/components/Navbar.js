@@ -1,14 +1,27 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectTotalItems } from '../features/cart/cartSlice';
+import { toggleMenu } from '../features/sidebar/sidebarSlice'
 
 const Navbar = ({ setCartOpen }) => {
   const totalItems = useSelector(selectTotalItems);
+  const dispatch = useDispatch();
+  const handleToggleMenu = () => {
+    dispatch(toggleMenu())
+  }
   return (
     <nav className="sticky top-0 p-4 flex flex-row justify-between items-center bg-white">
-      <section className="hidden lg:block lg:w-1/2">
-        <div className="w-full h-8 flex flex-row justify-start items-center bg-gray-100 rounded-md">
+      <section className="w-1/2 flex flex-row items-center">
+        <div>
+          <button
+            className="outline-none focus:outline-none"
+            onClick={handleToggleMenu}
+          >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
+        </div>
+        <div className="hidden w-full h-8 ml-2 md:flex flex-row justify-start items-center bg-gray-100 rounded-md">
           <svg className="w-4 h-4 text-gray-400 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           <input className="bg-transparent text-sm w-full" placeholder="Search ..." />
         </div>

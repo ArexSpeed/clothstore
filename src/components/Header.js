@@ -9,18 +9,23 @@ const Header = ({ site }) => {
         <span className="mx-4 font-semibold">{site}</span>
       </div>
     </div>
-    <div className="">
-      <button className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200">
-        Men
-      </button>
-      <button className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200">
-        Women
-      </button>
-      <button className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200">
-        Kid's
-      </button>
-      <select className="w-28 h-8 mx-3 px-2 rounded-lg border border-gray-100 text-center text-sm">
+    <div className="flex flex-row">
+      <div className="hidden md:block">
+        <button className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200">
+          Men
+        </button>
+        <button className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200">
+          Women
+        </button>
+        <button className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200">
+          Kid's
+        </button>
+      </div>
+      <select className="md:hidden w-28 h-8 mx-3 px-2 rounded-lg border border-gray-100 text-center text-sm">
         <option>Default</option>
+        <option>Men</option>
+        <option>Women</option>
+        <option>Kid's</option>
       </select>
       <button className="text-left px-2 w-28 h-8 rounded-lg border border-gray-100 text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200">
         <div className="flex flex-row justify-start items-center">
