@@ -1,6 +1,13 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'; 
+import { filterProducts } from '../features/products/productsSlice';
 
 const Header = ({ site }) => {
+  const dispatch = useDispatch();
+
+  const handleFilter = (type) => {
+    dispatch(filterProducts(type))
+  }
   return (
     <header className="flex flex-row justify-between items-center">
     <div>
@@ -11,13 +18,22 @@ const Header = ({ site }) => {
     </div>
     <div className="flex flex-row">
       <div className="hidden md:block">
-        <button className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200">
+        <button 
+          className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200"
+          onClick={() => handleFilter('men')}
+        >
           Men
         </button>
-        <button className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200">
+        <button 
+          className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200"
+          onClick={() => handleFilter('women')}
+        >
           Women
         </button>
-        <button className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200">
+        <button 
+          className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200"
+          onClick={() => handleFilter('kids')}
+        >
           Kid's
         </button>
       </div>
