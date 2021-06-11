@@ -1,8 +1,9 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'; 
-import { filterProducts } from '../features/products/productsSlice';
+import { useDispatch, useSelector } from 'react-redux'; 
+import { filterProducts, selectFilterProducts } from '../features/products/productsSlice';
 
 const Header = ({ site }) => {
+  const filter = useSelector(selectFilterProducts);
   const dispatch = useDispatch();
 
   const handleFilter = (type) => {
@@ -19,29 +20,32 @@ const Header = ({ site }) => {
     <div className="flex flex-row">
       <div className="hidden md:block">
         <button 
-          className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200"
+          className={`${filter === 'men' && 'bg-purple-400 text-white'} w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200 outline-none focus:outline-none`}
           onClick={() => handleFilter('men')}
         >
           Men
         </button>
         <button 
-          className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200"
+          className={`${filter === 'women' && 'bg-purple-400 text-white'} w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200 outline-none focus:outline-none`}
           onClick={() => handleFilter('women')}
         >
           Women
         </button>
         <button 
-          className="w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200"
+          className={`${filter === 'kids' && 'bg-purple-400 text-white'} w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200 outline-none focus:outline-none`}
           onClick={() => handleFilter('kids')}
         >
           Kid's
         </button>
       </div>
-      <select className="md:hidden w-28 h-8 mx-3 px-2 rounded-lg border border-gray-100 text-center text-sm">
-        <option>Default</option>
-        <option>Men</option>
-        <option>Women</option>
-        <option>Kid's</option>
+      <select 
+        className="md:hidden w-28 h-8 mx-3 px-2 rounded-lg border bg-transparent border-gray-100 text-center text-sm"
+        onChange={(e) => handleFilter(e.target.value)}
+      >
+        <option value="all">Default</option>
+        <option value="men">Men</option>
+        <option value="women">Women</option>
+        <option value="kids">Kid's</option>
       </select>
       <button className="text-left px-2 w-28 h-8 rounded-lg border border-gray-100 text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200">
         <div className="flex flex-row justify-start items-center">

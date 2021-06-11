@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ProductCard from './ProductCard';
-import { selectFavoriteItems } from '../features/favorite/favoriteSlice'
-import { allProducts,selectFilterProducts, selectAllProducts, selectMenProducts, selectWomenProducts, selectKidsProducts, fetchAllProducts, fetchMenProducts, fetchWomenProducts, fetchKidsProducts } from '../features/products/productsSlice'
+import { selectFilterProducts, selectAllProducts, selectMenProducts, selectWomenProducts, selectKidsProducts, fetchAllProducts, fetchMenProducts, fetchWomenProducts, fetchKidsProducts } from '../features/products/productsSlice'
 import Header from './Header';
 import Banner from './Banner';
 

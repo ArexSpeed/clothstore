@@ -47,7 +47,7 @@ const Navbar = ({ setCartOpen }) => {
             <img className="object-cover" src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" />
           </div>
         </button>
-        <select className="mx-2 focus:outline-none">
+        <select className="mx-2 bg-transparent focus:outline-none">
           <option>En</option>
           <option>Pl</option>
         </select>
