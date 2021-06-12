@@ -21,7 +21,7 @@ const CartItem = ({ item }) => {
   }
 
   return (
-    <div className="w-72 max-w-min h-xl p-2 m-2 rounded-3xl border flex flex-col justify-between border-gray-100">
+    <div className="product-cart">
       <div className="h-3/4 w-full">
         <img className="rounded-3xl h-full max-w-xs object-contain" src={item.image} alt="" />
       </div>

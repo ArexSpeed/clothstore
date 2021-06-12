@@ -20,19 +20,19 @@ const Header = ({ site }) => {
     <div className="flex flex-row">
       <div className="hidden md:block">
         <button 
-          className={`${filter === 'men' && 'bg-purple-400 text-white'} w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200 outline-none focus:outline-none`}
+          className={`${filter === 'men' && 'header-button-active'} header-button`}
           onClick={() => handleFilter('men')}
         >
           Men
         </button>
         <button 
-          className={`${filter === 'women' && 'bg-purple-400 text-white'} w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200 outline-none focus:outline-none`}
+          className={`${filter === 'women' && 'header-button-active'} header-button`}
           onClick={() => handleFilter('women')}
         >
           Women
         </button>
         <button 
-          className={`${filter === 'kids' && 'bg-purple-400 text-white'} w-28 h-8 mx-3 rounded-lg border border-gray-100 text-center text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200 outline-none focus:outline-none`}
+          className={`${filter === 'kids' && 'header-button-active'} header-button `}
           onClick={() => handleFilter('kids')}
         >
           Kid's
@@ -47,7 +47,7 @@ const Header = ({ site }) => {
         <option value="women">Women</option>
         <option value="kids">Kid's</option>
       </select>
-      <button className="text-left px-2 w-28 h-8 rounded-lg border border-gray-100 text-sm transition duration-200  hover:bg-purple-400 hover:text-white hover:transition hover:duration-200">
+      <button className="text-left px-2 header-button">
         <div className="flex flex-row justify-start items-center">
           <div className="w-4 h-4 text-xs bg-black text-white text-center rounded-full">0</div>
           <span className="px-2">Filter</span>

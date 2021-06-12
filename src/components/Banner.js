@@ -7,10 +7,10 @@ const Banner = () => {
       <h1 className="text-xl md:text-4xl font-bold"> READY-TO-WEAR </h1>
       <h3 className="text-sm md:text-xl">We'll be saying "spring has sprung" before you know it</h3>
       <div className="relative group z-20 w-32 h-12">
-        <button className="relative z-20 w-32 h-12 bg-black text-gray-300 text-center rounded-lg">
+        <button className="button-primary">
           Shop Now
         </button>
-        <div className="absolute top-0 left-0 transform -rotate-12 transition duration-200 w-full h-full bg-green-300 rounded-lg z-10 group-hover:rotate-12" />
+        <div className="button-primary-after group-hover:rotate-12" />
       </div>
     </div>
     <div className="hidden md:block">
