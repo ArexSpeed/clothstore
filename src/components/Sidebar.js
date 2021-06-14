@@ -1,26 +1,43 @@
+import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useDispatch ,useSelector } from 'react-redux';
 import { selectIsOpen } from '../features/sidebar/sidebarSlice';
 import { filterProducts } from '../features/products/productsSlice';
+import { toggleMenu } from '../features/sidebar/sidebarSlice';
  
 const Sidebar = () => {
   const location = useLocation();
   const pathname = location.pathname;
   const open = useSelector(selectIsOpen);
   const dispatch = useDispatch();
+  const sidebarRef = useRef();
+
+  useEffect(() => {
+    sidebarRef.current.classList.toggle('-translate-x-full')
+  }, [open])
 
   const handleFilter = (type) => {
     dispatch(filterProducts(type))
   }
 
+  const handleToggleMenu = () => {
+    dispatch(toggleMenu())
+  }
+
   return (
-    <div className={`${!open && 'hidden'} p-4 flex flex-col justify-between items-start w-64 max-w-xs h-full min-h-screen shadow-md`}>
+    <div ref={sidebarRef} className={`p-4 z-50 flex flex-col justify-between items-start w-64 max-w-xs h-full min-h-screen bg-white shadow-md absolute md:relative left-0 transform duration-200 -translate-x-full md:translate-x-0`}>
     <div className="w-full flex flex-col justify-center items-start">
-      <section>
+      <section className="flex flex-row w-full justify-between items-center">
         <div className="w-24 h-10 border border-black bg-green-300 flex justify-center items-center font-semibold">
           Logo
         </div>
+        <button 
+          className="focus:outline-none md:hidden"
+          onClick={handleToggleMenu}
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
       </section>
       <section>
         <h3 className="mt-4 mb-4 font-semibold">Explore</h3>
@@ -28,7 +45,7 @@ const Sidebar = () => {
           <Link 
             to="/" 
             className="sidebar-link"
-            onClick={() => handleFilter('all')}
+            onClick={() =>{ handleFilter('all'); handleToggleMenu()}}
           >
             <div className="flex">
               <svg className="w-5 h-5 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
